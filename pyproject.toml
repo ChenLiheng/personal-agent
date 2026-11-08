@@ -1,0 +1,36 @@
+[project]
+name = "pagent"
+version = "0.1.0"
+description = "A learning-oriented personal agent covering tools, RAG, MCP, memory, HITL and multi-agent"
+authors = [
+    { name = "陈立恒", email = "191129259@qq.com" }
+]
+requires-python = ">=3.11"
+dependencies = [
+    "fastembed>=0.9.1",
+    "fastmcp>=4.1.6",
+    "httpx>=0.28.1",
+    "langchain-chroma>=1.1.0",
+    "langchain[anthropic,mcp,openai]>=1.4.9",
+    "langgraph>=1.2.20",
+    "langgraph-checkpoint-sqlite>=3.1.3",
+    "python-dotenv>=1.2.4",
+    "rich>=15.0.0",
+]
+
+[project.scripts]
+pagent = "pagent:main"
+
+[build-system]
+requires = ["uv_build>=0.11.7,<0.12.0"]
+build-backend = "uv_build"
+
+[dependency-groups]
+dev = [
+    "pytest>=9.2.0",
+    "pytest-asyncio>=1.4.1.post1",
+]
+
+[tool.pytest.ini_options]
+asyncio_mode = "auto"
+filterwarnings = ["ignore::DeprecationWarning", "ignore:.*beta.*"]
